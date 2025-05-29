@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import PostForm from "./components/post/PostForm";
 import CardPost from "./components/post/CardPost";
+import Alert from "./components/ui/Alert";
 import axios from "axios";
 import { useState } from "react";
 
@@ -33,11 +34,12 @@ function App() {
     <>
       <Header />
       <div className="container min-w-1/2 mx-auto p-4">
-        <div className="flex gap-4 w-full">
-          <div className="flex flex-col gap-4 w-1/2">
+        {post && <Alert message="Post created successfully" type="green" />}
+        <div className="flex gap-4 w-full mt-5">
+          <div className="flex flex-col w-1/2">
             <PostForm formInitialState={formInitialState} handleSubmit={storePost} />
           </div>
-          <div className="flex flex-col gap-4 w-1/2">{isLoading ? <span className="text-center text-2xl font-bold text-gray-500">Loading...</span> : post && <CardPost post={post} />}</div>
+          <div className="flex flex-col w-1/2">{isLoading ? <span className="text-center text-2xl font-bold text-gray-500">Loading...</span> : post && <CardPost post={post} />}</div>
         </div>
       </div>
     </>

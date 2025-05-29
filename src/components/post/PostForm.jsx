@@ -19,7 +19,7 @@ export default function PostForm({ formInitialState, handleSubmit }) {
   return (
     <>
       <h1 className="text-3xl font-bold underline text-center">Add Post</h1>
-      <div className="w-full mt-10 bg-white shadow-lg rounded-xl p-8 border border-gray-100">
+      <div className="w-full mt-5 bg-white shadow-lg rounded-xl p-8 border border-gray-100">
         <form className="flex flex-col gap-6" onSubmit={handleFormSubmit}>
           <div className="flex flex-col gap-1">
             <label className="text-gray-700 font-semibold" htmlFor="author">
