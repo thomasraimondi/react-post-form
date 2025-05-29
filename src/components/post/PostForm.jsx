@@ -14,6 +14,7 @@ export default function PostForm({ formInitialState, handleSubmit }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     handleSubmit(formData);
+    setFormData(formInitialState);
   };
 
   return (
@@ -75,7 +76,6 @@ export default function PostForm({ formInitialState, handleSubmit }) {
               type="checkbox"
               id="public"
               name="public"
-              required
             />
             <label className="text-gray-700 select-none cursor-pointer" htmlFor="public">
               Public
