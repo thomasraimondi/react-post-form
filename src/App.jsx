@@ -15,6 +15,7 @@ const formInitialState = {
 function App() {
   const [post, setPost] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [response, setResponse] = useState();
 
   const storePost = (post) => {
     setIsLoading(true);
@@ -22,10 +23,12 @@ function App() {
       .post("https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts", post)
       .then((res) => {
         setPost(res.data);
+        setResponse(res.status);
         setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setResponse(err.status);
         setIsLoading(false);
       });
   };
@@ -34,7 +37,7 @@ function App() {
     <>
       <Header />
       <div className="container min-w-1/2 mx-auto p-4">
-        {post && <Alert message="Post created successfully" type="green" />}
+        {post && response === 201 ? <Alert message="Post created successfully" type="green" /> : post && response !== 201 ? <Alert message="Post failed to create" type="red" /> : null}
         <div className="flex gap-4 w-full mt-5">
           <div className="flex flex-col w-1/2">
             <PostForm formInitialState={formInitialState} handleSubmit={storePost} />
