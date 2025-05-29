@@ -32,11 +32,13 @@ function App() {
   return (
     <>
       <Header />
-      <div className="container w-1/2 mx-auto p-4">
-        <h1 className="text-3xl font-bold underline">Form Post</h1>
-        <PostForm formInitialState={formInitialState} handleSubmit={storePost} />
-        <hr className="my-4" />
-        {isLoading ? <span className="text-center text-2xl font-bold text-gray-500">Loading...</span> : post && <CardPost post={post} />}
+      <div className="container min-w-1/2 mx-auto p-4">
+        <div className="flex gap-4 w-full">
+          <div className="flex flex-col gap-4 w-1/2">
+            <PostForm formInitialState={formInitialState} handleSubmit={storePost} />
+          </div>
+          <div className="flex flex-col gap-4 w-1/2">{isLoading ? <span className="text-center text-2xl font-bold text-gray-500">Loading...</span> : post && <CardPost post={post} />}</div>
+        </div>
       </div>
     </>
   );
